@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Container managing `ToastMessageView`s in a first-in, first-out manner using animations.
-struct ToastMessageContainer: View {
+public struct ToastMessageContainer: View {
 
 	/// All the toast messages to be shown.
 	@Binding var toastMessages: [ToastMessage]
@@ -16,7 +16,13 @@ struct ToastMessageContainer: View {
 	/// Currently shown toast messages.
 	@State var visibleMessages: [ToastMessage] = []
 
-    var body: some View {
+	public init(
+		toastMessages: Binding<[ToastMessage]>
+	) {
+		self._toastMessages = toastMessages
+	}
+
+    public var body: some View {
 		VStack {
 			ForEach(visibleMessages) { model in
 				ToastMessageView(viewModel: model)

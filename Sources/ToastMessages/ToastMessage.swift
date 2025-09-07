@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// All possible types of toast messages.
-enum ToastMessageStyle {
+public enum ToastMessageStyle {
 
 	// A success message
 	case success
@@ -43,10 +43,10 @@ enum ToastMessageStyle {
 }
 
 /// Toast message view model
-struct ToastMessage: Identifiable, Equatable {
+public struct ToastMessage: Identifiable, Equatable {
 
 	/// The toast message's identifier.
-	let id: String
+	public let id: String
 
 	/// The title
 	let title: String
@@ -56,4 +56,11 @@ struct ToastMessage: Identifiable, Equatable {
 
 	/// The style of the toast message
 	let style: ToastMessageStyle
+
+	public init(id: String, title: String, message: String, style: ToastMessageStyle) {
+		self.id = id
+		self.title = title
+		self.message = message
+		self.style = style
+	}
 }
